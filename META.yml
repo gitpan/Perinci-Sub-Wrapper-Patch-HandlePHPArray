@@ -1,0 +1,23 @@
+---
+abstract: "Convert {} to [] or vice versa to match functions' expectations"
+author:
+  - 'Steven Haryanto <stevenharyanto@gmail.com>'
+build_requires:
+  Module::Build: 0.3601
+configure_requires:
+  Module::Build: 0.3601
+dynamic_config: 0
+generated_by: 'Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560'
+license: perl
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Perinci-Sub-Wrapper-Patch-HandlePHPArray
+requires:
+  Log::Any: 0
+  Module::Patch: 0
+  Perinci::Sub::Wrapper: 0.44
+resources:
+  homepage: http://metacpan.org/release/Perinci-Sub-Wrapper-Patch-HandlePHPArray
+  repository: http://github.com/sharyanto/perl-Perinci-Sub-Wrapper-Patch-HandlePHPArray
+version: 0.01

@@ -1,0 +1,38 @@
+NAME
+    Perinci::Sub::Wrapper::Patch::HandlePHPArray - Convert {} to [] or vice
+    versa to match functions' expectations
+
+VERSION
+    version 0.01
+
+SYNOPSIS
+     use Perinci::Sub::Wrapper::HandlePHPArray;
+
+DESCRIPTION
+    This module patches Perinci::Sub::Wrapper so the generated function
+    wrapper code can convert argument "{}" to "[]" when function expects
+    argument to be an array, or vice versa "[]" to "{}" when function
+    expects a hash argument. This can help if function is being called by
+    PHP clients, because in PHP "Array()" is ambiguous, it can be an empty
+    hash or an empty array.
+
+    To make this work, you have to specify schema in your argument
+    specification in your Rinci metadata, and the type must be hash or
+    array.
+
+    This is a temporary/stop-gap solution. The more "official" solution is
+    to use Perinci::Access::HTTP::Server which has the
+    "deconfuse_php_clients" option (by default turned on).
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2013 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+
+FUNCTIONS
+    None are exported by default, but they are exportable.
+
