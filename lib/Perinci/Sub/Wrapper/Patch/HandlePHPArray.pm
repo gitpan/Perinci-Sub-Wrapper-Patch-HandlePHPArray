@@ -7,18 +7,16 @@ use Log::Any '$log';
 
 use parent qw(Module::Patch);
 
-our $VERSION = '0.01'; # VERSION
+our $VERSION = '0.02'; # VERSION
 
 my $code = sub {
     my $ctx = shift;
 
     my ($self, %args) = @_;
-    die "Sorry, this patch only works when normalize_schemas is turned on"
-        unless $self->{_args}{normalize_schemas};
 
     $ctx->{orig}->(@_);
 
-    $self->select_section('before_call_accept_args');
+    $self->select_section('before_call_before_arg_validation');
 
     my $args = $self->{_meta}{args};
     for my $an (sort keys %$args) {
@@ -53,7 +51,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -61,7 +59,7 @@ Perinci::Sub::Wrapper::Patch::HandlePHPArray - Convert {} to [] or vice versa to
 
 =head1 VERSION
 
-version 0.01
+version 0.02
 
 =head1 SYNOPSIS
 
@@ -82,20 +80,31 @@ This is a temporary/stop-gap solution. The more "official" solution is to use
 L<Perinci::Access::HTTP::Server> which has the C<deconfuse_php_clients> option
 (by default turned on).
 
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/Perinci-Sub-Wrapper-Patch-HandlePHPArray>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-Perinci-Sub-Wrapper-Patch-HandlePHPArray>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=Perinci-Sub-Wrapper-Patch-HandlePHPArray>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
 =head1 AUTHOR
 
 Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
-
-=head1 FUNCTIONS
-
-
-None are exported by default, but they are exportable.
 
 =cut
